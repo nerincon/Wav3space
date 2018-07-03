@@ -1,0 +1,14 @@
+.ui.vertical.menu {
+    height: 100%;
+    margin-right: 1.2rem;
+    margin-top: 22rem;
+    background: #222b3b linear-gradient(to bottom, #252d42, #1d1f26);
+}
+
+.ui.vertical.menu .menu .item {
+    color: white;
+}
+
+.ui.vertical.menu .item>.header:not(.ui) {
+    color: white;
+}
