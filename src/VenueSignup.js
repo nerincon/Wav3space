@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 import logo from './logo.png'
 import MainMenu from './MainMenu'
 
@@ -23,22 +24,19 @@ class VenueSignup extends Component {
         </Header>
         <Form size='large'>
           <Segment stacked>
-            <Form.Input fluid icon='bars' iconPosition='left' placeholder='Venue Name' />
-            <Form.Input fluid icon='home' iconPosition='left' placeholder='Country' />
-            <Form.Input fluid icon='home' iconPosition='left' placeholder='State' />
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail Address' />
-            <Form.Input fluid icon='address card' iconPosition='left' placeholder='Venue Address' />
-            <Form.Input fluid icon='phone' iconPosition='left' placeholder='Phone Number' />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='Re-Type Password' type='password' />
+            <Form.Input fluid icon='bars' iconPosition='left' name='venuename' placeholder='Venue Name' />
+            <Form.Input fluid icon='home' iconPosition='left' name='country' placeholder='Country' />
+            <Form.Input fluid icon='home' iconPosition='left' name='state' placeholder='State' />
+            <Form.Input fluid icon='user' iconPosition='left' name='email' placeholder='E-mail Address' />
+            <Form.Input fluid icon='address card' iconPosition='left' name='address' placeholder='Venue Address' />
+            <Form.Input fluid icon='phone' iconPosition='left' name='phone' placeholder='Phone Number' />
+            <Form.Input fluid icon='lock' iconPosition='left' name='password' placeholder='Password' type='password' />
             <Button color='green' fluid size='large'>
               Sign-up
             </Button>
           </Segment>
         </Form>
-        <Message>
-          Already have a Wav3space account?  <a href='#'>Log In</a>
-        </Message>
+        <Message>Already have a Wav3space account?  <Link to="/login">Log-In</Link></Message>
       </Grid.Column>
     </Grid>
   </div>

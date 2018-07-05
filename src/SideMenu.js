@@ -22,63 +22,63 @@ import UpcomingShows from './UpcomingShows';
 
           <Menu.Menu>
             <Menu.Item
-              name='enterprise'
-              active={activeItem === 'enterprise'}
+              name='bands'
+              active={activeItem === 'bands'}
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='consumer'
-              active={activeItem === 'consumer'}
+              name='shows'
+              active={activeItem === 'shows'}
               onClick={this.handleItemClick}
             />
           </Menu.Menu>
         </Menu.Item>
 
         <Menu.Item>
-          <Menu.Header>CMS Solutions</Menu.Header>
+          <Menu.Header>Something else</Menu.Header>
 
           <Menu.Menu>
             <Menu.Item
-              name='rails'
-              active={activeItem === 'rails'}
+              name='s1'
+              active={activeItem === 's1'}
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='python'
-              active={activeItem === 'python'}
+              name='s2'
+              active={activeItem === 's2'}
               onClick={this.handleItemClick}
             />
-            <Menu.Item name='php' active={activeItem === 'php'} onClick={this.handleItemClick} />
+            <Menu.Item name='s3' active={activeItem === 's3'} onClick={this.handleItemClick} />
           </Menu.Menu>
         </Menu.Item>
 
         <Menu.Item>
-          <Menu.Header>Hosting</Menu.Header>
+          <Menu.Header>SomethingHeader</Menu.Header>
 
           <Menu.Menu>
             <Menu.Item
-              name='shared'
-              active={activeItem === 'shared'}
+              name='s4'
+              active={activeItem === 's4'}
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='dedicated'
-              active={activeItem === 'dedicated'}
+              name='s5'
+              active={activeItem === 's5'}
               onClick={this.handleItemClick}
             />
           </Menu.Menu>
         </Menu.Item>
 
         <Menu.Item>
-          <Menu.Header>Support</Menu.Header>
+          <Menu.Header>?????</Menu.Header>
 
           <Menu.Menu>
-            <Menu.Item name='email' active={activeItem === 'email'} onClick={this.handleItemClick}>
-              E-mail Support
+            <Menu.Item name='s6' active={activeItem === 's6'} onClick={this.handleItemClick}>
+              Whaaaaa
             </Menu.Item>
 
-            <Menu.Item name='faq' active={activeItem === 'faq'} onClick={this.handleItemClick}>
-              FAQs
+            <Menu.Item name='s7' active={activeItem === 's7'} onClick={this.handleItemClick}>
+              the fuckk
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
