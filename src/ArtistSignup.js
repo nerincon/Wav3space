@@ -24,13 +24,15 @@ class ArtistSignup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    axios.post('http://localhost:9090/bands/signup', {
+    axios.post('http://localhost:5000/bands/signup', {
       bandname: this.state.bandname,
       bandemail: this.state.bandemail,
       password: this.state.password,
       verifypassword: this.state.verifypassword
     })
       .then(({data}) => {
+        // data will be either the result from the insert query or the res.send message from the server.
+        console.log(data)
         console.log(data.bandname + ' added to the database.')
         console.log(data.error_msg);
         this.setState({

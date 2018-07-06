@@ -12,7 +12,7 @@ class Navbar extends Component {
         <Container>
           <Menu.Item header>
             <Image size='mini' src={logo} style={{ marginRight: '1.5em' }} /><Link to='/'>Wav3space</Link></Menu.Item>
-          <Menu.Item><Link to='/'>Home</Link></Menu.Item>
+          <Menu.Item><Link to='/'>Shop</Link></Menu.Item>
           <Dropdown item simple text='Discover'>
             <Dropdown.Menu>
               <Dropdown.Item>Bands</Dropdown.Item>

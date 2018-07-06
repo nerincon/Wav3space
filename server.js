@@ -4,7 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 var pgp = require('pg-promise')()
-const db = pgp({database: 'wav3space'})
+const db = pgp({database: 'wav3space', user: 'postgres'})
 const session = require('express-session')
 const passhelper = require('pbkdf2-helpers')
 
@@ -31,15 +31,10 @@ app.use(session({
 //     }
 //   });
 
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
-
 app.get('/api/bands', (req, res, next) => {
-  res.send('hello')
-//   db.any(`SELECT * FROM bands ORDER BY bandname`)
-//     .then(result => resp.json(result))
-//     .catch(next)
+  db.any(`SELECT * FROM bands`)
+    .then(result => res.json(result))
+    .catch(next)
 })
 
 app.post('/bands/signup', (req, res, next) => {
@@ -54,20 +49,19 @@ app.post('/bands/signup', (req, res, next) => {
     // req.session.user = bandname;
     console.log('got to line 53')
     var hash = passhelper.create_hash(password)
-    var db_storage_text = passhelper.generate_storage(hash)
-    let query = `INSERT INTO users VALUES(DEFAULT, ${bandname}, ${bandemail}, ${db_storage_text})`
-    db.result(query, {bandname, bandemail, db_storage_text})
-      .then(function () {
-        console.log('this is result: ' + result)
-        res.redirect('/')
-      })
-    // .then(result => res.json(result))
+    var passwordStorage = passhelper.generate_storage(hash)
+    db.one(`INSERT INTO bands VALUES (default, $1, $2, $3) returning *`, [bandname, bandemail, passwordStorage])
+      .then(result => res.json(result))
       .catch(next)
   } else {
-    res.redirect('/bands/signup')
+    res.send('Need to put all information')
   }
 })
 
-app.listen(9090, function () {
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
+
+app.listen(5000, function () {
   console.log('Listening on port 9090')
 })

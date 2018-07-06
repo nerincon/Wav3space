@@ -6,13 +6,46 @@ class UpcomingShows extends Component {
   render () {
     return (
       <Grid.Column width={12} padded>
+        <Container className='foo'>
+          <h1>Popular Bands</h1>
+        </Container>
         <Container className='upcoming'>
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-          <Image style={{display: 'inline-block', padding: '1.5rem'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/220px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
+          <figure style={{display: 'inline-block'}}>
+            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
+            <figcaption>Band Name Here</figcaption>
+          </figure>
         </Container>
       </Grid.Column>
     )
