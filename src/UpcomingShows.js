@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
-import { Container, Grid, Image } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { allBandsInfo } from './actions/index'
 import './UpcomingShows.css'
 
+
 class UpcomingShows extends Component {
+
+  componentDidMount = () => {
+    this.props.allBandsInfo()
+  };
+
   render () {
     return (
       <Grid.Column width={12} padded>
@@ -10,46 +18,18 @@ class UpcomingShows extends Component {
           <h1>Popular Bands</h1>
         </Container>
         <Container className='upcoming'>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
-          <figure style={{display: 'inline-block'}}>
-            <Image style={{borderRadius: '15px'}} src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg/215px-Blink-182_-_Enema_of_the_State_cover.jpg' />
-            <figcaption>Band Name Here</figcaption>
-          </figure>
+          {this.props.items && this.props.items.map((band) => {
+            return (
+              <figure style={{display: 'inline-block', backgroundImage: `url('${band.main_image}')`}} key={band.bandname}>
+                <figcaption>{band.bandname}</figcaption>
+              </figure>
+            )
+          })
+          }
         </Container>
       </Grid.Column>
     )
   }
 }
 
-export default UpcomingShows
+export default connect(({allBandsInfo: items}) => items, {allBandsInfo})(UpcomingShows)

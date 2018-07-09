@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import MainMenu from './MainMenu'
-import logo from './logo.png'
+import whitelogo from './wav3space-logo-white.png'
 import axios from 'axios';
 
 class LoginForm extends Component {
@@ -52,7 +52,7 @@ class LoginForm extends Component {
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
               <Header as='h2' color='green' textAlign='center'>
-                <Image src={logo} /> Log-in to your account
+                <Image src={whitelogo} /> Log-in to your account
               </Header>
               <Form size='large' onSubmit={this.handleFormSubmit.bind(this)}>
                 <Segment stacked>

@@ -1,0 +1,5 @@
+.ui.button, .ui.buttons .button, .ui.buttons .or {
+    margin-top: 4rem;
+    background-color: blue;
+    color: black
+}

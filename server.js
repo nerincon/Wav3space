@@ -20,19 +20,32 @@ app.use(session({
   cookie: {maxAge: 6000000, domain: 'localhost', secure: false, sameSite: false, httpOnly: false}
 }))
 
-var open_pages = ['/', '/login', '/signup', '/logout'];
+var open_pages = ['/', '/login', '/signup', '/logout', '/api/allbandsmain']
 
 app.use(function (req, res, next) {
-    if (req.session.userid || open_pages.indexOf(req.path) > -1) {
-      next();
-    } else {
-      console.log('no band or venue logged-in');
-      res.redirect('/login');
-    }
-  });
+  if (req.session.userid || open_pages.indexOf(req.path) > -1) {
+    next()
+  } else {
+    console.log('no band or venue logged-in')
+    res.redirect('/login')
+  }
+})
 
 app.get('/api/bands', (req, res, next) => {
   db.any(`SELECT * FROM bands`)
+    .then(result => res.json(result))
+    .catch(next)
+})
+
+app.get('/api/allbandsmain', (req, res, next) => {
+  db.any(`SELECT * FROM bandpics`)
+    .then(result => res.json(result))
+    .catch(next)
+})
+
+app.get('/bandinfo', (req, res, next) => {
+  let id = req.query.id
+  db.one('SELECT * FROM bands WHERE id = $1', [id])
     .then(result => res.json(result))
     .catch(next)
 })
@@ -42,7 +55,7 @@ app.post('/bands/signup', (req, res, next) => {
   let bandemail = req.body.bandemail
   let password = req.body.password
   if (bandname && bandemail && password) {
-    req.session.user = bandname;
+    req.session.user = bandname
     var hash = passhelper.create_hash(password)
     var passwordStorage = passhelper.generate_storage(hash)
     db.one(`INSERT INTO bands VALUES (default, $1, $2, $3) returning *`, [bandname, bandemail, passwordStorage])
@@ -54,24 +67,29 @@ app.post('/bands/signup', (req, res, next) => {
 })
 
 app.post('/login', function (req, res, next) {
-  var email = req.body.email;
-  var password = req.body.password;
+  var email = req.body.email
+  var password = req.body.password
   if (email && password) {
-      db.one('SELECT * FROM bands WHERE bandemail = $1', [email])
-      .then(function(result){
-          if (passhelper.matches(password, result.password)) {
-              req.session.email = email;
-              req.session.userid = result.id;
-              res.json({id: result.id, email:email});
-          } else {
-              res.render('/login');
-          }
+    db.one('SELECT * FROM bands WHERE bandemail = $1', [email])
+      .then(function (result) {
+        if (passhelper.matches(password, result.password)) {
+          req.session.email = email
+          req.session.userid = result.id
+          res.json({id: result.id, email: email})
+        } else {
+          res.render('/login')
+        }
       })
       .catch(next)
   } else {
-      res.redirect('/login');
+    res.redirect('/login')
   }
-  });
+})
+
+app.get('/logout', function (req, res) {
+  req.session.destroy()
+  res.redirect('/login')
+})
 
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))

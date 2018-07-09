@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Dropdown, Container, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import logo from './logo.png'
+import blacklogo from './wav3space-logo-black.png'
 
 import './MainMenu.css'
 
@@ -10,9 +10,9 @@ class Navbar extends Component {
     return (
       <Menu fixed='top' inverted>
         <Container>
-          <Menu.Item header>
-            <Image size='mini' src={logo} style={{ marginRight: '1.5em' }} /><Link to='/'>Wav3space</Link></Menu.Item>
-          <Menu.Item><Link to='/'>Shop</Link></Menu.Item>
+          <Menu.Item header as='a'>
+            <Image size='mini' src={blacklogo} style={{ marginRight: '1.5em' }} /><Link to='/'>Wav3space</Link></Menu.Item>
+          <Menu.Item as='a'><Link to='/'>Shop</Link></Menu.Item>
           <Dropdown item simple text='Discover'>
             <Dropdown.Menu>
               <Dropdown.Item>Bands</Dropdown.Item>
@@ -30,8 +30,9 @@ class Navbar extends Component {
               <Dropdown.Item>Studio Time</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Menu.Item position='right'><Link to='/login'>Log-In</Link></Menu.Item>
-          <Menu.Item><Link to='/bands/signup'>Sign-Up</Link></Menu.Item>
+          <Menu.Item as='a' position='right'><Link to='/login'>Log-In</Link></Menu.Item>
+          <Menu.Item as='a'><Link to='/bands/signup'>Sign-Up</Link></Menu.Item>
+          <Menu.Item as='a'>Logout</Menu.Item>
         </Container>
       </Menu>
 
