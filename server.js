@@ -20,19 +20,23 @@ app.use(session({
   cookie: {maxAge: 6000000, domain: 'localhost', secure: false, sameSite: false, httpOnly: false}
 }))
 
-var open_pages = ['/', '/login', '/signup', '/logout', '/api/allbandsmain']
+// var open_pages = ['/', '/login', '/signup', '/logout', '/api/allbandsmain', '/api/bandartists/:bandname']
 
-app.use(function (req, res, next) {
-  if (req.session.userid || open_pages.indexOf(req.path) > -1) {
-    next()
-  } else {
-    console.log('no band or venue logged-in')
-    res.redirect('/login')
-  }
-})
+// app.use(function (req, res, next) {
+//   if (req.session.userid || open_pages.indexOf(req.path) > -1) {
+//     next()
+//   } else {
+//     console.log('no band or venue logged-in')
+//     res.redirect('/login')
+//   }
+// })
 
-app.get('/api/bands', (req, res, next) => {
-  db.any(`SELECT * FROM bands`)
+app.get('/api/bandartists/:bandname', (req, res, next) => {
+  let bandname = req.params.bandname
+  let bandnameconfg = bandname.toString()
+  // if bandname have a dash ("-"), then need to turn it into string first to work. So the commented one below, will not work.
+  // db.any('SELECT * FROM artists WHERE bandname = $1 ', [bandname])
+  db.any('SELECT * FROM artists WHERE bandname = $1 ', [bandnameconfg])
     .then(result => res.json(result))
     .catch(next)
 })

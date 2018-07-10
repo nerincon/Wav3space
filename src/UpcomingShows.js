@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { allBandsInfo } from './actions/index'
+import { allBandsInfo, bandArtistsInfo } from './actions/index'
 import './UpcomingShows.css'
+import { withRouter } from 'react-router-dom'
 
 
 class UpcomingShows extends Component {
@@ -10,6 +11,12 @@ class UpcomingShows extends Component {
   componentDidMount = () => {
     this.props.allBandsInfo()
   };
+
+  goToBandPage = (bandname, history) => {
+    this.props.bandArtistsInfo(bandname, this.props.history)
+    // this.props.history.push(`bandinfo/${bandname}`)
+    setTimeout(() => console.log(this.props), 2000)
+  }
 
   render () {
     return (
@@ -20,8 +27,10 @@ class UpcomingShows extends Component {
         <Container className='upcoming'>
           {this.props.items && this.props.items.map((band) => {
             return (
-              <figure style={{display: 'inline-block', backgroundImage: `url('${band.main_image}')`}} key={band.bandname}>
-                <figcaption>{band.bandname}</figcaption>
+              <figure 
+              style={{display: 'inline-block', backgroundImage: `url('${band.main_image}')`}} 
+              key={band.bandname}> 
+              <figcaption><button onClick={ () => this.goToBandPage(band.bandname)}>{band.bandname}</button></figcaption>
               </figure>
             )
           })
@@ -32,4 +41,4 @@ class UpcomingShows extends Component {
   }
 }
 
-export default connect(({allBandsInfo: items}) => items, {allBandsInfo})(UpcomingShows)
+export default connect(({allBandsInfo: items}) => items, {allBandsInfo, bandArtistsInfo})(withRouter(UpcomingShows))

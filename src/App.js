@@ -18,7 +18,7 @@ class App extends Component {
             <Route path='/venues/signup' component={VenueSignup} />
             <Route path='/bands/signup' component={ArtistSignup} />
             <Route path='/login' component={Login} />
-            <Route path='/bandinfo' component={BandPage} />
+            <Route path='/bandinfo/:name' component={BandPage} />
           </div>
         </Router>
       </Provider>
