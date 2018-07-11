@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Menu, Grid, Segment } from 'semantic-ui-react'
+import { Menu, Grid, Segment, Sidebar } from 'semantic-ui-react'
 import './SideBar.css'
 import UpcomingShows from './UpcomingShows';
 
- class Sidebar extends Component {
+ class SidebarList extends Component {
      
   handleItemClick = name => this.setState({ activeItem: name })
 
@@ -12,10 +12,10 @@ import UpcomingShows from './UpcomingShows';
     const { activeItem } = this.state || {}
 
     return (
-    <Segment vertical style={{ margin: '5em 0em 0em', padding: '0em 0em', border: 'none' }}>
+    <Segment vertical style={{padding: '0', border: 'none' }}>
     <Grid>
     <Grid.Row>
-    <Grid.Column width={3} padded>
+    <Grid.Column width={3}>
       <Menu vertical>
         <Menu.Item>
           <Menu.Header>Browse</Menu.Header>
@@ -92,4 +92,4 @@ import UpcomingShows from './UpcomingShows';
   }
 }
 
-export default Sidebar
+export default SidebarList

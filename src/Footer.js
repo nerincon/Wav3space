@@ -7,7 +7,7 @@ class Footer extends Component {
   render () {
     return (
       <div className='foot'>
-        <Segment inverted vertical style={{ margin: '20em 0em 0em', padding: '1.5em 0em' }}>
+        <Segment inverted vertical style={{ padding: '1.5em 0em' }}>
           <Container textAlign='center'>
             <List horizontal inverted divided link>
               <List.Item><Image centered size='mini' src={blacklogo} /></List.Item>
