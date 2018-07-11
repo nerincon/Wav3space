@@ -13,6 +13,7 @@ class UpcomingShows extends Component {
   };
 
   goToBandPage = (bandname, history) => {
+    // console.log(this.props.history)
     this.props.bandArtistsInfo(bandname, this.props.history)
     // this.props.history.push(`bandinfo/${bandname}`)
     setTimeout(() => console.log(this.props), 2000)

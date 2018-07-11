@@ -19,9 +19,16 @@ const panes = [
 ]
 
 class BandPage extends Component {
+  goToBandPage (bandname, history) {
+    this.props.bandArtistsInfo(bandname, this.props.history)
+    // this.props.history.push(`bandinfo/${bandname}`)
+    // setTimeout(() => console.log(this.props), 2000)
+  }
   componentDidMount () {
-    console.log(this.props.bands.band.bandname)
-  // this.props.bandArtistsInfo(this.props.match.params.name)
+    var wholepath = this.props.history.location.pathname
+    var splitpath = wholepath.split('/')
+    var bandname = splitpath.pop()
+    this.goToBandPage(bandname)
   }
 
   render () {
