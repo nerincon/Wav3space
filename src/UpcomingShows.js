@@ -13,15 +13,12 @@ class UpcomingShows extends Component {
   };
 
   goToBandPage = (bandname, history) => {
-    // console.log(this.props.history)
     this.props.bandArtistsInfo(bandname, this.props.history)
-    // this.props.history.push(`bandinfo/${bandname}`)
-    setTimeout(() => console.log(this.props), 2000)
   }
 
   render () {
     return (
-      <Grid.Column width={12} padded>
+      <Grid.Column width={12}>
         <Container className='foo'>
           <h1>Popular Bands</h1>
         </Container>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tab } from 'semantic-ui-react'
+import { Tab, Grid } from 'semantic-ui-react'
 import MainMenu from './MainMenu'
 import SongsTable from './SongsTable'
 import BandVideo from './BandVideo'
@@ -12,18 +12,14 @@ import { bandArtistsInfo } from './actions/index'
 import './BandPage.css'
 
 const panes = [
-  { menuItem: 'Band Artists', render: () => <Tab.Pane><AddArtistModal /> <ArtistCard /></Tab.Pane> },
-  { menuItem: 'Band Albums', render: () => <Tab.Pane><Album /></Tab.Pane> },
-  { menuItem: 'Band Songs', render: () => <Tab.Pane><SongsTable /></Tab.Pane> },
-  { menuItem: 'Band Videos', render: () => <Tab.Pane><BandVideo /></Tab.Pane> }
+  { menuItem: 'Band Artists', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><AddArtistModal /> <ArtistCard /></Tab.Pane> },
+  { menuItem: 'Band Albums', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><Album /></Tab.Pane> },
+  { menuItem: 'Band Songs', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><SongsTable /></Tab.Pane> },
+  { menuItem: 'Band Videos', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><BandVideo /></Tab.Pane> }
 ]
 
 class BandPage extends Component {
-  goToBandPage (bandname, history) {
-    this.props.bandArtistsInfo(bandname, this.props.history)
-    // this.props.history.push(`bandinfo/${bandname}`)
-    // setTimeout(() => console.log(this.props), 2000)
-  }
+
   componentDidMount () {
     var wholepath = this.props.history.location.pathname
     var splitpath = wholepath.split('/')
@@ -31,11 +27,19 @@ class BandPage extends Component {
     this.goToBandPage(bandname)
   }
 
+  goToBandPage (bandname, history) {
+    this.props.bandArtistsInfo(bandname, this.props.history)
+  }
+
   render () {
     return (
       <div>
         <MainMenu />
-        <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+        <Grid>
+          <Grid.Column width={14}>
+            <Tab style={{marginTop: '5rem', marginLeft: '2rem'}} menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }

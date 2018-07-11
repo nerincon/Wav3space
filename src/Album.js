@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import { bandArtistsInfo } from './actions/index'
+// import { connect } from 'react-redux'
+// import { bandArtistsInfo } from './actions/index'
 
 
 class Album extends Component {

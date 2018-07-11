@@ -32,9 +32,7 @@ class ArtistSignup extends Component {
     })
       .then(({data}) => {
         // data will be either the result from the insert query or the res.send message from the server.
-        console.log(data)
         console.log(data.bandname + ' added to the database.')
-        console.log(data.error_msg);
         this.setState({
           bandname: '',
           bandemail: '',

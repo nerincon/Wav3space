@@ -10,9 +10,9 @@ class Navbar extends Component {
     return (
       <Menu fixed='top' inverted>
         <Container>
-          <Menu.Item header as='a'>
+          <Menu.Item header >
             <Image size='mini' src={blacklogo} style={{ marginRight: '1.5em' }} /><Link to='/'>Wav3space</Link></Menu.Item>
-          <Menu.Item as='a'><Link to='/'>Shop</Link></Menu.Item>
+          <Menu.Item ><Link to='/'>Shop</Link></Menu.Item>
           <Dropdown item simple text='Discover'>
             <Dropdown.Menu>
               <Dropdown.Item>Bands</Dropdown.Item>
@@ -30,9 +30,9 @@ class Navbar extends Component {
               <Dropdown.Item>Studio Time</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Menu.Item as='a' position='right'><Link to='/login'>Log-In</Link></Menu.Item>
-          <Menu.Item as='a'><Link to='/bands/signup'>Sign-Up</Link></Menu.Item>
-          <Menu.Item as='a'>Logout</Menu.Item>
+          <Menu.Item position='right'><Link to='/login'>Log-In</Link></Menu.Item>
+          <Menu.Item><Link to='/bands/signup'>Sign-Up</Link></Menu.Item>
+          <Menu.Item>Logout</Menu.Item>
         </Container>
       </Menu>
 

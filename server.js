@@ -95,6 +95,21 @@ app.get('/logout', function (req, res) {
   res.redirect('/login')
 })
 
+app.post('/add/bandartist', (req, res, next) => {
+  let bandname = req.body.bandname
+  let artistname = req.body.artistname
+  let artistrole = req.body.artistrole
+  let artistimg = req.body.artistimg
+  let artistbio = req.body.artistbio
+  if (artistname && artistrole && artistimg, artistbio) {
+    db.one(`INSERT INTO artists VALUES (default, $1, $2, $3, $4, $5) returning *`, [bandname, artistname, artistrole, artistimg, artistbio])
+      .then(result => res.json(result))
+      .catch(next)
+  } else {
+    res.send('Need to put all information')
+  }
+})
+
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })

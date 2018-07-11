@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Grid, Segment, Sidebar } from 'semantic-ui-react'
+import { Menu, Grid, Segment } from 'semantic-ui-react'
 import './SideBar.css'
 import UpcomingShows from './UpcomingShows';
 
