@@ -27,7 +27,8 @@ export const allBandsInfo = () => dispatch => {
 // }
 
 export const bandArtistsInfo = (bandname, history) => dispatch => {
-  axios.get('http://localhost:5000/api/bandartists/' + bandname).then(res => {
+  const url = process.env === 'development' ? 'http://localhost:5000/api/bandartists/' : '/api/bandartists/'
+  axios.get(url + bandname).then(res => {
     dispatch({type: GET_BAND_ARTISTS, payload: res.data})
     history.replace(`/bandinfo/${bandname}`)
   })
