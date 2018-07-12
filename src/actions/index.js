@@ -29,7 +29,7 @@ export const allBandsInfo = () => dispatch => {
 // }
 
 export const bandArtistsInfo = (bandname, history) => dispatch => {
-  axios.get(url('allbandsmain/' + bandname)).then(res => {
+  axios.get(url('bandartists/' + bandname)).then(res => {
     dispatch({type: GET_BAND_ARTISTS, payload: res.data})
     history.replace(`/bandinfo/${bandname}`)
   })
