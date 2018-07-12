@@ -1,16 +1,20 @@
 import axios from 'axios'
 import {GET_USER_BAND_INFO, GET_ALL_BANDS_MAIN_PIC, GET_BAND_ARTISTS} from './types'
 
-const url = param => process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' + param : 'https://backendapiwav3space.herokuapp.com/api/' + param
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api' : 'https://backendapiwav3space.herokuapp.com/api'
+
+const axiosInstance = axios.create({
+  baseURL: url
+})
 
 export const getUserBandInfo = () => dispatch => {
-  axios.get(url('bandinfo')).then(res => {
+  axiosInstance.get('/bandinfo').then(res => {
     dispatch({type: GET_USER_BAND_INFO, payload: res.data})
   })
 }
 
 export const allBandsInfo = () => dispatch => {
-  axios.get(url('allbandsmain')).then(res => {
+  axiosInstance.get('/allbandsmain').then(res => {
     dispatch({type: GET_ALL_BANDS_MAIN_PIC, payload: res.data})
   })
 }
@@ -29,7 +33,7 @@ export const allBandsInfo = () => dispatch => {
 // }
 
 export const bandArtistsInfo = (bandname, history) => dispatch => {
-  axios.get(url('bandartists/' + bandname)).then(res => {
+  axiosInstance.get('/bandartists/' + bandname).then(res => {
     dispatch({type: GET_BAND_ARTISTS, payload: res.data})
     history.replace(`/bandinfo/${bandname}`)
   })
