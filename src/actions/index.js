@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {GET_USER_BAND_INFO, GET_ALL_BANDS_MAIN_PIC, GET_BAND_ARTISTS} from './types'
 
-const url = param => process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' + param : 'https://bandendapiwav3space.herokuapp.com/api/' + param
+const url = param => process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' + param : 'https://backendapiwav3space.herokuapp.com/api/' + param
 
 export const getUserBandInfo = () => dispatch => {
   axios.get(url('bandinfo')).then(res => {
