@@ -5,6 +5,12 @@ import MainMenu from './MainMenu'
 import whitelogo from './wav3space-logo-white.png'
 import axios from 'axios';
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://backendapiwav3space.herokuapp.com'
+
+const axiosInstance = axios.create({
+  baseURL: url
+})
+
 class LoginForm extends Component {
   state= {
     email: '',
@@ -16,7 +22,7 @@ class LoginForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    axios.post('http://localhost:5000/login', {
+    axiosInstance.post('/login', {
       email: this.state.email,
       password: this.state.password,
     })

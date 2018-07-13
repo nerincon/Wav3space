@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bandArtistsInfo } from './actions/index'
 
+
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/add' : 'https://backendapiwav3space.herokuapp.com/add'
 
 const axiosInstance = axios.create({
@@ -17,6 +18,12 @@ class AddArtistModal extends Component {
     artistrole: '',
     artistimg: '',
     artistbio: '',
+  }
+
+  onComponentMount () {
+    this.setState({
+      signedup: false,
+    })
   }
 
   handleInputChange = event => {
@@ -100,6 +107,5 @@ class AddArtistModal extends Component {
     }
   }
 
-  // export default AddArtistModal
 
   export default connect(({bands}) => ({bands}), {bandArtistsInfo})(withRouter(AddArtistModal))
