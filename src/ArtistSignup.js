@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import whitelogo from './wav3space-logo-white.png'
-import MainMenu from './MainMenu'
 import axios from 'axios';
 
 class ArtistSignup extends Component {
@@ -54,7 +53,6 @@ class ArtistSignup extends Component {
                 height: 100%;
               }
             `}</style>
-            <MainMenu />
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
               <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='green' textAlign='center'>

@@ -5,6 +5,11 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bandArtistsInfo } from './actions/index'
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/add' : 'https://backendapiwav3space.herokuapp.com/add'
+
+const axiosInstance = axios.create({
+  baseURL: url
+})
 
 class AddArtistModal extends Component {
   state = {
@@ -26,7 +31,7 @@ class AddArtistModal extends Component {
     var wholepath = this.props.history.location.pathname
     var splitpath = wholepath.split('/')
     var bandname = splitpath.pop()
-    axios.post('http://localhost:5000/add/bandartist', {
+    axiosInstance.post('/bandartist', {
       bandname: bandname,
       artistname: this.state.artistname,
       artistrole: this.state.artistrole,

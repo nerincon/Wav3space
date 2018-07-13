@@ -1,13 +1,53 @@
-.ui.vertical.menu {
+#mainsidemenu {
     height: 100%;
     margin-right: 1.2rem;
     background: #222b3b linear-gradient(to bottom, #252d42, #1d1f26);
 }
 
-.ui.vertical.menu .menu .item {
-    color: white;
+#textcolor {
+    color: white
 }
 
-.ui.vertical.menu .item>.header:not(.ui) {
-    color: white;
+#textcolor2 {
+    color: white
+}
+
+#textcolor3 {
+    color: white
+}
+
+#textcolor4 {
+    color: white
+}
+
+#textcolor5 {
+    color: white
+}
+
+#textcolor6 {
+    color: white
+}
+
+#textcolor7 {
+    color: white
+}
+
+#textcolor8 {
+    color: white
+}
+
+#textcolor9 {
+    color: white
+}
+
+#textcolor10 {
+    color: white
+}
+
+#textcolor11 {
+    color: white
+}
+
+#textcolor12 {
+    color: white
 }

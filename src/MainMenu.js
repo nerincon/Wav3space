@@ -31,7 +31,7 @@ class Navbar extends Component {
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Item position='right'><Link to='/login'>Log-In</Link></Menu.Item>
-          <Menu.Item><Link to='/bands/signup'>Sign-Up</Link></Menu.Item>
+          <Menu.Item><Link to='/signup'>Sign-Up</Link></Menu.Item>
           <Menu.Item>Logout</Menu.Item>
         </Container>
       </Menu>
