@@ -10,7 +10,6 @@ class UpcomingShows extends Component {
 
   componentDidMount = () => {
     this.props.allBandsInfo()
-    console.log(process.env)
   };
 
   goToBandPage = (bandname, history) => {

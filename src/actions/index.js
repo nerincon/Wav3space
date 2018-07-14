@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {GET_USER_BAND_INFO, GET_ALL_BANDS_MAIN_PIC, GET_BAND_ARTISTS} from './types'
+import {GET_USER_BAND_INFO, GET_ALL_BANDS_MAIN_PIC, GET_BAND_ARTISTS, GET_BAND_MAIN_PIC} from './types'
 
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api' : 'https://backendapiwav3space.herokuapp.com/api'
 
@@ -19,6 +19,12 @@ export const allBandsInfo = () => dispatch => {
   })
 }
 
+export const getBandMainPic = (bandname) => dispatch => {
+  axiosInstance.get('/bandmainpic/' + bandname).then(res => {
+    dispatch({type: GET_BAND_MAIN_PIC, payload: res.data})
+  })
+}
+
 // long way to do it... below is the short way by using the replace method history has.
 
 // export const bandArtistsInfo = (bandname, history) => dispatch => {
@@ -32,6 +38,7 @@ export const allBandsInfo = () => dispatch => {
 //   })
 // }
 
+// need to choose a better way to do this. replace is not a good idea because it will not have timeline and pressing back button in browser will not work.
 export const bandArtistsInfo = (bandname, history) => dispatch => {
   axiosInstance.get('/bandartists/' + bandname).then(res => {
     dispatch({type: GET_BAND_ARTISTS, payload: res.data})

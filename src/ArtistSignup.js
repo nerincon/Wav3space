@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import whitelogo from './wav3space-logo-white.png'
 import axios from 'axios';
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://backendapiwav3space.herokuapp.com'
+
+const axiosInstance = axios.create({
+  baseURL: url
+})
+
 class ArtistSignup extends Component {
   state = {
     bandname: '',
@@ -23,7 +29,7 @@ class ArtistSignup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    axios.post('http://localhost:5000/bands/signup', {
+    axiosInstance.post('/bands/signup', {
       bandname: this.state.bandname,
       bandemail: this.state.bandemail,
       password: this.state.password,
@@ -39,6 +45,15 @@ class ArtistSignup extends Component {
           verifypassword: '',
       })
     })
+      .catch(err => console.log(err));
+
+    axiosInstance.post('/api/allbandsmain', {
+      bandname: this.state.bandname,
+      mainpic: 'https://www.fastenersplus.com/c.1015218/Clickstop/fp-sca-kilimanjaro/img/no_image_available.jpeg'
+    })
+      .then(({data}) => {
+        console.log(data)
+      })
       .catch(err => console.log(err));
   };
 

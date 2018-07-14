@@ -6,12 +6,15 @@ import BandVideo from './BandVideo'
 import Album from './Album'
 import ArtistCard from './ArtistCard'
 import AddArtistModal from './AddArtistModal'
+import UpdateImgModal from './updateBandMainPicModal'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { bandArtistsInfo } from './actions/index'
+import { bandArtistsInfo, getBandMainPic } from './actions/index'
 import './BandPage.css'
+import BandMainPic from './BandMainPic'
 
 const panes = [
+  { menuItem: 'Band Main Image', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><UpdateImgModal /><BandMainPic /></Tab.Pane> },
   { menuItem: 'Band Artists', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><AddArtistModal /> <ArtistCard /></Tab.Pane> },
   { menuItem: 'Band Albums', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><Album /></Tab.Pane> },
   { menuItem: 'Band Songs', render: () => <Tab.Pane style={{backgroundColor: '#1b1c1d'}}><SongsTable /></Tab.Pane> },
@@ -19,7 +22,6 @@ const panes = [
 ]
 
 class BandPage extends Component {
-
   componentDidMount () {
     var wholepath = this.props.history.location.pathname
     var splitpath = wholepath.split('/')
@@ -29,6 +31,7 @@ class BandPage extends Component {
 
   goToBandPage (bandname, history) {
     this.props.bandArtistsInfo(bandname, this.props.history)
+    this.props.getBandMainPic(bandname)
   }
 
   render () {
@@ -45,4 +48,4 @@ class BandPage extends Component {
   }
 }
 
-export default connect(({bands}) => ({bands}), {bandArtistsInfo})(withRouter(BandPage))
+export default connect(({bands}) => ({bands}), {bandArtistsInfo, getBandMainPic})(withRouter(BandPage))

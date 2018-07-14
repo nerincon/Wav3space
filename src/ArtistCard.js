@@ -8,7 +8,7 @@ class ArtistCard extends Component {
   render () {
     return (
       <div>
-        {this.props.bands.band && this.props.bands.band.map((artist,idx) => {
+        {this.props.bands.band && this.props.bands.band.map((artist, idx) => {
           return (
             <Card key={idx} style={{display: 'inline-block', marginLeft: '4rem', marginTop: '2rem'}}>
               <Image src={artist.artist_img} />
