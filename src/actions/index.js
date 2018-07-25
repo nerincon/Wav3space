@@ -42,6 +42,11 @@ export const getBandMainPic = (bandname) => dispatch => {
 export const bandArtistsInfo = (bandname, history) => dispatch => {
   axiosInstance.get('/bandartists/' + bandname).then(res => {
     dispatch({type: GET_BAND_ARTISTS, payload: res.data})
-    history.replace(`/bandinfo/${bandname}`)
+    // history.replace(`/bandinfo/${bandname}`)
+    if (window.location.href.indexOf('bandinfo/') !== -1) {
+      history.push(`${bandname}`)
+    } else {
+      history.push(`bandinfo/${bandname}`)
+    }
   })
 }

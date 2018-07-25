@@ -87,7 +87,7 @@ class LoginForm extends Component {
                   <Button color='green' fluid size='large' type='submit' disabled={isLoading}>Login</Button>
                 </Segment>
               </Form>
-              <Message>New to Wav3space?  <Link to="/bands/signup">Sign-Up</Link></Message>
+              <Message>New to Wav3space?  <Link to="/signup">Sign-Up</Link></Message>
             </Grid.Column>
           </Grid>
         </div>
